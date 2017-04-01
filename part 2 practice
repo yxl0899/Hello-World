@@ -1,0 +1,69 @@
+void setup()
+{
+  size(500, 500);
+  smooth();
+}
+
+void draw()
+{
+  {
+  fill(#E07F7F);
+  beginShape();
+  vertex(300, 195);
+  vertex(310, 55);
+  vertex(315, 180);
+  vertex(400, 160);
+  vertex(300, 195);
+  endShape();
+}
+{
+  fill(#E07F7F);
+  beginShape();
+  vertex(5, 300);
+  vertex(255, 218);
+  vertex(110, 400);
+  vertex(225, 240);
+  vertex(5, 300);
+  endShape();
+}
+{
+  fill(#7FB5E0);
+  beginShape();
+  vertex(275, 220);
+  vertex(215, 395);
+  vertex(277, 252);
+  vertex(320, 350);
+  vertex(275, 220);
+  endShape();
+}
+{
+  fill(#7FB5E0);
+  beginShape();
+  vertex(300, 215);
+  vertex(400, 190);
+  vertex(320, 217);
+  vertex(380, 310);
+  vertex(300, 215);
+  endShape();
+}
+{
+  fill(#7FB5E0);
+  beginShape();
+  vertex(180, 10);
+  vertex(275, 200);
+  vertex(80, 75);
+  vertex(255, 180);
+  vertex(180, 10);
+  endShape();
+}
+{
+  fill(#7FB5E0);
+  beginShape();
+  vertex(50, 100);
+  vertex(250, 205);
+  vertex(10, 265);
+  vertex(210, 200);
+  vertex(50, 100);
+  endShape();
+}
+}
