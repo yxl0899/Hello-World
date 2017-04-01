@@ -1,0 +1,41 @@
+size(758, 750);
+{
+  beginShape();
+  vertex(200, 200);
+  vertex(190, 500);
+  vertex(418, 500);
+  vertex(400, 200);
+  endShape();
+}
+arc(300, 200, 200, 200, PI, PI+PI);
+ellipse(250, 210, 50, 50); 
+ellipse(350, 210, 50, 50);
+fill(0);
+ellipse(250, 210, 5, 5);
+fill(0);
+ellipse(350, 210, 5, 5);
+fill(#FFE352);
+ellipse(300, 270, 124, 60);
+line(238, 270, 362, 270);
+{
+  fill(255);
+  beginShape();
+  vertex(199, 275);
+  vertex(170, 350);
+  vertex(160, 390);
+  vertex(170, 395);
+  vertex(196, 375);
+  endShape();
+}
+{
+  beginShape();
+  vertex(402, 275);
+  vertex(430, 350);
+  vertex(440, 390);
+  vertex(430, 395);
+  vertex(404, 375);
+  endShape();
+}
+fill(#FFE352);
+ellipse(240, 500, 80, 20);
+ellipse(360, 500, 80, 20);
