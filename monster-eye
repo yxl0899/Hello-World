@@ -1,0 +1,150 @@
+void setup() {
+  size(750, 750);
+  m1 = new Monster(250, 250);
+}
+
+void draw() {
+m1.update(mouseX, mouseY);
+m1.display();
+}
+
+class Monster
+{
+  float monsterX;
+  float monsterY;
+  Eye leye;
+  Eye reye;
+  boolean bover = false;
+  boolean locked = false;
+  float bdifx =0.0;
+  float bdify = 0.0;
+  Monster(int x, int y) {
+    monsterX = x;
+    monsterY = y;
+    leye = new Eye(250, 210);
+    reye = new Eye(350, 210);
+  }
+void update(int mx, int my) {
+  leye.update(mx-monsterX, my-monsterY);
+  reye.update(mx-monsterX, my-monsterY);
+  
+  if(isInside(mx, my))
+  {
+    bover = true;
+  }
+  else
+  {
+    bover = false;
+  }
+}
+
+boolean isInside(int mx, int my) {
+  if (leye.isInside(my-monsterX, my-monsterY))
+  {
+    return true;
+  }
+  if (reye.isInside(mx-monsterX, my-monsterY))
+  {
+    return true;
+  }
+  return false;
+}
+
+void display() {
+  pushMatrix();
+//Ground
+line(0, 504, 750, 504);
+//Body
+noStroke();
+fill(255);
+beginShape();
+vertex(200, 200);
+vertex(190, 500);
+vertex(418, 500);
+vertex(400, 200);
+endShape();
+arc(300, 200, 200, 200, PI, PI+PI);
+//Mouth
+stroke(0);
+fill(#FCED3D);
+ellipse(300, 270, 124, 60);
+line(238, 270, 362, 270);
+//Left hand
+noStroke();
+fill(255);
+beginShape();
+vertex(200, 275);
+vertex(170, 350);
+vertex(160, 390);
+vertex(170, 395);
+vertex(196, 375);
+endShape();
+//Right hand
+fill(255);
+beginShape();
+vertex(403, 275);
+vertex(430, 350);
+vertex(440, 390);
+vertex(430, 395);
+vertex(404, 375);
+endShape();
+//Feet
+fill(#FCED3D);
+ellipse(240, 500, 80, 20);
+ellipse(360, 500, 80, 20);
+leye.display();
+reye.display();
+
+popMatrix();}
+}
+
+class Eye 
+{
+  final static int MAX_EYE_SIZE = 100;
+  final static int MIN_EYE_SIZE = 20;
+  int ex, ey;
+  float size;
+  float velocity;
+  float angle = 0.0;
+  
+  Eye(int x, int y) {
+    ex = x;
+    ey = y;    
+    size = random(MIN_EYE_SIZE, MAX_EYE_SIZE);
+  }
+ 
+  boolean isInside(float mx, float my) {
+   float distance = sqrt(sq(ex - mx) + sq(ey - my));
+   if (distance <= size)
+   {
+     return true;
+   }
+   else
+   {
+     return false;
+   }
+  }
+ 
+  void update(float mx, float my) {
+    angle = atan2(my-ey, mx-ex);
+    size += velocity;
+    if (size > MAX_EYE_SIZE) {
+      velocity = -velocity;
+    }
+    if (size < MIN_EYE_SIZE) {
+      velocity = -velocity;  
+    }
+  }
+ 
+  void display() {
+    pushMatrix();
+    translate(ex, ey);
+    fill(255);
+    stroke(0);
+    ellipse(0, 0, 50, 50);
+    rotate(angle);
+    fill(153);
+    ellipse(size/4, 0, 7, 7);
+    popMatrix();
+  }
+}
