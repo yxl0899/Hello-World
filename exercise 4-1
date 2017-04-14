@@ -1,0 +1,19 @@
+ //Alvin Lin
+//Processing Part 4
+void setup() {
+  size(500, 500);
+  textAlign(CENTER);
+}
+PFont font1;
+PFont font2;
+void draw() {
+  background(0);
+  font1 = loadFont("Mistral-100.vlw");
+  textFont(font1);
+  text("Alvin Lin", 250, 200); 
+  fill(#69F560);
+  font2 = loadFont("Broadway-100.vlw");
+  textFont(font2);
+  text("Alvin Lin", 250, 350);
+  fill(#60B5F5);
+}
