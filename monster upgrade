@@ -1,0 +1,110 @@
+//Alvin Lin
+int BodyPX = 200; 
+int MouthPX = 300;
+int HandPX = 200;
+int FeetPX = 240;
+int EyePX = 300;
+void setup() {
+  size(750, 750);
+}
+void draw(){
+//ground
+line(0, 504, 750, 504);
+background(0);
+//Body
+strokeWeight(1);
+fill(255);
+beginShape();
+vertex(BodyPX, 200);
+vertex(BodyPX-10, 500);
+vertex(BodyPX+218, 500);
+vertex(BodyPX+200, 200);
+endShape();
+arc(BodyPX+100, 200, 200, 200, PI, PI+PI); 
+if (keyPressed){
+  if (key == CODED){
+    if(keyCode == RIGHT)BodyPX += 5;
+    else if(keyCode == LEFT)BodyPX -= 5;
+  }
+}
+//Mouth
+strokeWeight(1);
+fill(#FCED3D);
+if (keyPressed){
+  if (key == CODED){
+    if(keyCode == UP)fill(#FF0808);
+    else if(keyCode == DOWN)fill(#22FF17);
+  }
+}
+ellipse(MouthPX, 270, 124, 60);
+line(MouthPX-62, 270, MouthPX+62, 270);
+if (keyPressed){
+  if (key == CODED){
+    if(keyCode == RIGHT)MouthPX += 5;
+    else if(keyCode == LEFT)MouthPX -= 5;
+  }
+}
+//Left hand
+strokeWeight(1);
+fill(255);
+beginShape();
+vertex(HandPX, 275);
+vertex(HandPX-30, 350);
+vertex(HandPX-40, 390);
+vertex(HandPX-30, 395);
+vertex(HandPX-4, 375);
+endShape();
+//Right hand
+strokeWeight(1);
+fill(255);
+beginShape();
+vertex(HandPX+203, 275);
+vertex(HandPX+230, 350);
+vertex(HandPX+240, 390);
+vertex(HandPX+230, 395);
+vertex(HandPX+204, 375);
+endShape();
+if (keyPressed){
+  if (key == CODED){
+    if(keyCode == RIGHT)HandPX += 5;
+    else if(keyCode == LEFT)HandPX -= 5;
+  }
+}
+//Feet
+strokeWeight(1);
+fill(#FCED3D);
+if (keyPressed){
+  if (key == CODED){
+    if(keyCode == UP)fill(#FF0808);
+    else if(keyCode == DOWN)fill(#22FF17);
+  }
+}
+ellipse(FeetPX, 500, 80, 20);
+ellipse(FeetPX+120, 500, 80, 20);
+if (keyPressed){
+  if (key == CODED){
+    if(keyCode == RIGHT)FeetPX += 5;
+    else if(keyCode == LEFT)FeetPX -= 5;
+  }
+}
+//Eye
+fill(255);
+if (keyPressed){
+  if (key == CODED){
+    if(keyCode == UP)fill(#FF0808);
+    else if(keyCode == DOWN)fill(#22FF17);
+  }
+}
+strokeWeight(1.5);
+ellipse(EyePX-50, 210, 50, 50);
+ellipse(EyePX+50, 210, 50, 50);
+fill(0);
+ellipse(EyePX-50, 210, 8, 8);
+ellipse(EyePX+50, 210, 8, 8);
+if (keyPressed){
+  if (key == CODED){
+    if(keyCode == RIGHT)EyePX += 5;
+    else if(keyCode == LEFT)EyePX -= 5;
+  }
+}
+}
