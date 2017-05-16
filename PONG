@@ -1,0 +1,71 @@
+float ballX = 20;
+float ballY = 20;
+float ballR = 10;
+float dX = random(1, 2);
+float dY = random(1, 2);
+float X;
+float paddleW = 10;
+float paddleH = 30;
+
+ 
+void setup() {
+  size(400, 400);
+  X = width-15;
+}
+ 
+void draw() {
+  background(0);
+  ellipse(ballX, ballY, 2 * ballR, 2 * ballR);
+ 
+  rect(X, mouseY, paddleW, paddleH);
+ 
+  if (ballRight() > width) {
+    rect(0, 0, width, height);
+    noLoop();
+  }
+ 
+  if (collision()) {
+    dX = -dX; // if dX == 2, it becomes -2; if dX is -2, it becomes 2
+  }
+ 
+  if (ballLeft() < 0) {
+    dX = -dX; // if dX == 2, it becomes -2; if dX is -2, it becomes 2
+  }
+ 
+  if (ballBottom() > height) {
+    dY = -dY; // if dY == 2, it becomes -2; if dY is -2, it becomes 2
+  }
+ 
+  if (ballTop() < 0) {
+    dY = -dY; // if dY == 2, it becomes -2; if dY is -2, it becomes 2
+  }
+ 
+  ballX = ballX + dX;
+  ballY = ballY + dY;
+}
+ 
+boolean collision() {
+  boolean returnValue = false; // assume there is no collision
+  if ((ballRight() >= X) && (ballLeft() <= X + paddleW)) {
+    if ((ballBottom() >= mouseY) && (ballTop() <= mouseY + paddleH)) {
+      returnValue = true;
+    }
+  }
+  return returnValue;
+}
+ 
+float ballLeft() {
+  return ballX-ballR;
+}
+ 
+float ballRight() {
+  return ballX + ballR;
+}
+ 
+float ballTop() {
+  return ballY-ballR;
+}
+ 
+float ballBottom() {
+  return ballY + ballR;
+}
