@@ -1,6 +1,6 @@
 //Alvin Lin
 float x, y, speedX, speedY;
-float diam = 30;
+float diam = 10;
 float rectSize = 200;
 int start;
 int timer;
@@ -8,13 +8,12 @@ int score = 0;
 PFont font;
 
 void setup() {
-  fullScreen();
+  size(1000, 750);
   smooth();
+  noStroke();
   rectMode(CENTER);
   fill(0, 225, 0);
   textSize(50);
-  font = loadFont("FranklinGothic-Heavy-50.vlw");
-  textFont(font);
   reset();
 }
 
@@ -32,12 +31,20 @@ void draw() {
   
   ellipse(x, y, diam, diam);
 
-  rect(0, height/2, 25, height);
+  rect(0, height/2, 10, height);
+  rect(width/2, 0, width, 10);
+  rect(width, height/2, 10, height);
+  rect(width/2, height, width, 10);
+
   rect(width-30, mouseY, 12, rectSize);
   
+  font = loadFont("FranklinGothic-Heavy-50.vlw");
+  textFont(font);
   timer = millis()/1000 -start/1000;
   text(timer, 50, 50);
   
+  font = loadFont("HarlowSolid-50.vlw");
+  textFont(font);
   if(x > width-30) {
       score = score +100;
       if(x > width) {
