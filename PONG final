@@ -1,7 +1,5 @@
 //Alvin Lin
 float x, y, speedX, speedY;
-float diam = 10;
-float rectSize = 200;
 int start;
 int timer;
 int score = 0;
@@ -29,21 +27,21 @@ void reset() {
 void draw() { 
   background(0);
   
-  ellipse(x, y, diam, diam);
+  ellipse(x, y, 10, 10);
 
   rect(0, height/2, 10, height);
   rect(width/2, 0, width, 10);
   rect(width, height/2, 10, height);
   rect(width/2, height, width, 10);
 
-  rect(width-30, mouseY, 12, rectSize);
+  rect(width-30, mouseY, 12, 200);
   
   font = loadFont("FranklinGothic-Heavy-50.vlw");
   textFont(font);
   timer = millis()/1000 -start/1000;
   text(timer, 50, 50);
   
-  font = loadFont("HarlowSolid-50.vlw");
+  font = loadFont("ErasITC-Demi-50.vlw");
   textFont(font);
   if(x > width-30) {
       score = score +100;
@@ -56,13 +54,13 @@ void draw() {
   x += speedX;
   y += speedY;
   
-  if ( x > width-30 && x < width -20 && y > mouseY-rectSize/2 && y < mouseY+rectSize/2 ) {
+  if ( x > width-30 && x < width -20 && y > mouseY-100 && y < mouseY+100) {
     speedX = speedX * -1;
   } 
 
   if (x < 25) {
-    speedX *= -1.1;
-    speedY *= 1.1;
+    speedX *= -1;
+    speedY *= 1;
     x += speedX;
   }
   
