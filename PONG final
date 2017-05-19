@@ -1,0 +1,70 @@
+//Alvin Lin
+float x, y, speedX, speedY;
+float diam = 30;
+float rectSize = 200;
+int start;
+int timer;
+int score = 0;
+PFont font;
+
+void setup() {
+  fullScreen();
+  smooth();
+  rectMode(CENTER);
+  fill(0, 225, 0);
+  textSize(50);
+  font = loadFont("FranklinGothic-Heavy-50.vlw");
+  textFont(font);
+  reset();
+}
+
+void reset() {
+  x = random(width/2);
+  y = random(height/2);
+  speedX = 10;
+  speedY = 10;
+  start = millis();
+  score = 0;
+}
+
+void draw() { 
+  background(0);
+  
+  ellipse(x, y, diam, diam);
+
+  rect(0, height/2, 25, height);
+  rect(width-30, mouseY, 12, rectSize);
+  
+  timer = millis()/1000 -start/1000;
+  text(timer, 50, 50);
+  
+  if(x > width-30) {
+      score = score +100;
+      if(x > width) {
+        score = 0;
+      }
+    }
+  text(score, width/2-50, 50);
+  
+  x += speedX;
+  y += speedY;
+  
+  if ( x > width-30 && x < width -20 && y > mouseY-rectSize/2 && y < mouseY+rectSize/2 ) {
+    speedX = speedX * -1;
+  } 
+
+  if (x < 25) {
+    speedX *= -1.1;
+    speedY *= 1.1;
+    x += speedX;
+  }
+  
+  if ( y > height || y < 0 ) {
+    speedY *= -1;
+  }
+}
+
+void mousePressed() {
+  reset();
+  fill(random(255), 255, random(255));
+}
